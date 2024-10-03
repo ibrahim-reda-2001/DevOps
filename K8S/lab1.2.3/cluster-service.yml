@@ -1,0 +1,16 @@
+apiVersion: v1 
+kind: Service
+metadata:
+  name: back-end-service  
+spec:
+  type: ClusterIP
+  ports:
+    - targetPort: 80
+      port: 80
+  selector:
+    app: hello    
+
+
+#to check the service from another pod with same selector item 
+#kubectl exec -it nginx(name of pod ) -- sh
+#curl back-end(name of service)

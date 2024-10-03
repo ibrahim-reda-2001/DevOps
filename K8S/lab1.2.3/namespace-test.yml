@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deloyment
+  labels:
+    app: myapp
+    type: front-end
+  namespace: test
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: myapp
+      type: front-end
+  template:
+    metadata:
+      name: nginx
+      labels:
+        app: myapp
+        type: front-end
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          resources:
+            limits:
+              memory: "500Mi" 
+            requests:
+              memory:  "150Mi"
